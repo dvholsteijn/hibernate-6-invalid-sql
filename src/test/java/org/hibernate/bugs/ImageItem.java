@@ -4,7 +4,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
-import org.hibernate.annotations.Cascade;
 
 @Entity
 public class ImageItem extends MediaItem {

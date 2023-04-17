@@ -41,7 +41,7 @@ public class JPAUnitTestCase {
 		entityManager.persist(imageItem);
 
 		ImageItem imageItem2 = createImageItem("original2.jpg");
-		imageItem.setThumbnail(createImageItem("thumbnail2.jpg"));
+		imageItem2.setThumbnail(createImageItem("thumbnail2.jpg"));
 		entityManager.persist(imageItem2);
 
 

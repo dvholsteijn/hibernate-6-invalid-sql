@@ -9,7 +9,6 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public abstract class MediaItem implements Cloneable, Comparable<MediaItem> {
 
 	@Id
