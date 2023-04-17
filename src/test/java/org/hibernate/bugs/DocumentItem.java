@@ -1,6 +1,6 @@
 package org.hibernate.bugs;
 
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
 
 @Entity
 public class DocumentItem extends MediaItem {

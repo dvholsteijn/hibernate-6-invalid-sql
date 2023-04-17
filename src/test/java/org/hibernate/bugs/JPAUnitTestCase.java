@@ -1,8 +1,8 @@
 package org.hibernate.bugs;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import org.junit.After;
 import org.junit.Before;
@@ -41,7 +41,7 @@ public class JPAUnitTestCase {
 		entityManager.persist(imageItem);
 
 		ImageItem imageItem2 = createImageItem("original2.jpg");
-		imageItem.setThumbnail(createImageItem("thumbnail2.jpg"));
+		imageItem2.setThumbnail(createImageItem("thumbnail2.jpg"));
 		entityManager.persist(imageItem2);
 
 
