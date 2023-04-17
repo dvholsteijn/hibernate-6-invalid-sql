@@ -34,21 +34,24 @@ public class JPAUnitTestCase {
 	public void testLavic1591() throws Exception {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
+
 		// Do stuff...
 		ImageItem imageItem = createImageItem("original.jpg");
 		imageItem.setThumbnail(createImageItem("thumbnail.jpg"));
-
 		entityManager.persist(imageItem);
 
-		PartialImage partialImage = new PartialImage();
-		partialImage.setFileName("partial.jpg");
-		partialImage.setOriginal(imageItem);
-		partialImage.setThumbnail(createImageItem("partial_thumbnail.jpg"));
-		entityManager.persist(partialImage);
+		ImageItem imageItem2 = createImageItem("original2.jpg");
+		imageItem.setThumbnail(createImageItem("thumbnail2.jpg"));
+		entityManager.persist(imageItem2);
 
-		List<ImageItem> originals = entityManager.createQuery("select i from ImageItem i where i.original is null and i.thumbnail is not null").getResultList();
 
-		Assertions.assertEquals(2, originals.size());
+		List<ImageItem> allImages = entityManager.createQuery("select i from ImageItem i").getResultList();
+
+		Assertions.assertEquals(4, allImages.size());
+
+		List<ImageItem> originalImages = entityManager.createQuery("select i from ImageItem i where i.original is null and i.thumbnail is not null").getResultList();
+
+		Assertions.assertEquals(2, originalImages.size(), "Number of original images");
 
 		entityManager.getTransaction().commit();
 		entityManager.close();
